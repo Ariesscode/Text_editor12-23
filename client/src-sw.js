@@ -35,7 +35,10 @@ const assetsCache = new StaleWhileRevalidate({
       statuses: [0, 200],
     
     }),
-    new ExpirationPlugin{
+    new ExpirationPlugin({
+      maxAgeSeconds: 7 * 24 * 60 * 60, //7 days 
+
+    }),
   ]
 })
 
