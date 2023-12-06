@@ -23,7 +23,7 @@ module.exports = () => {
         title: 'TODOs List'
       }),
 
-      new GenerateSW(),
+      new InjectManifest (),
       new WebpackPwaManifest({
         name: 'TODOs',
         short_name: 'TODOs',
