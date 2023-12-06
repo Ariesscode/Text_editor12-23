@@ -19,6 +19,15 @@ const pageCache = new CacheFirst({
   ],
 });
 
+self.addEventListener('install', (event) => { //new service worker is installed/activated confirm
+  console.log('Service Worker installed');
+});
+
+self.addEventListener('activate', (event) => {
+  console.log('Service Worker activated');
+});
+
+
 warmStrategyCache({
   urls: ['/index.html', '/'],
   strategy: pageCache,
@@ -36,21 +45,15 @@ const assetsCache = new StaleWhileRevalidate({
     
     }),
     new ExpirationPlugin({
-      maxAgeSeconds: 7 * 24 * 60 * 60, //7 days 
+      maxAgeSeconds: 7 * 24 * 60 * 60, //7 days expire
 
     }),
   ],
 });
 
 registerRoute(
-  /\.(?:js|css|png|jpg|jpeg|svg|gif)$/,
+  /\.(?:js|css|png|jpg|jpeg|svg|gif)$/, //match file extensions
   assetsCache
 );
 
-self.addEventListener('install', (event) => { //new service worker is installed/activated confirm
-  console.log('Service Worker installed');
-});
 
-self.addEventListener('activate', (event) => {
-  console.log('Service Worker activated');
-});
