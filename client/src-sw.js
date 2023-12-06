@@ -39,7 +39,11 @@ const assetsCache = new StaleWhileRevalidate({
       maxAgeSeconds: 7 * 24 * 60 * 60, //7 days 
 
     }),
-  ]
-})
+  ],
+});
 
-registerRoute();
+registerRoute(
+  /\.(?:js|css|png|jpg|jpeg|svg|gif)$/,
+  assetsCache
+);
+
