@@ -47,3 +47,10 @@ registerRoute(
   assetsCache
 );
 
+self.addEventListener('install', (event) => { //new service worker is installed/activated confirm
+  console.log('Service Worker installed');
+});
+
+self.addEventListener('activate', (event) => {
+  console.log('Service Worker activated');
+});
