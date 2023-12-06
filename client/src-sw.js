@@ -28,4 +28,15 @@ registerRoute(({ request }) => request.mode === 'navigate', ({ event }) => {
   return pageCache.handle({ event })
 });
 
+const assetsCache = new StaleWhileRevalidate({
+  cacheName: 'assets-cache',
+  plugins: [
+    new CacheableResponsePlugin({
+      statuses: [0, 200],
+    
+    }),
+    new ExpirationPlugin{
+  ]
+})
+
 registerRoute();
