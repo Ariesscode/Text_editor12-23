@@ -8,5 +8,7 @@ const header = `
 just another text editor
 */                          
 `;
+const headerContainer = document.getElementById('header-container');
 
+headerContainer.textContent = header;
 export { header };
